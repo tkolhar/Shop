@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AppTest" project="shop" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="shop.shop.AppTest" time="52.255">
+    <testcase name="searchValidProduct" classname="shop.shop.AppTest" time="38.836"/>
+    <testcase name="searchInvalidProduct" classname="shop.shop.AppTest" time="13.419"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,38 @@
+package shop.shop;
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AppTest {
+    private String baseUrl;
+    private WebDriver driver;
+
+    @Before
+    public void openBrowser() {
+        baseUrl = "http://facebook.com/";
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(baseUrl);
+        driver.manage().window().maximize();
+    }
+
+    @Test
+    public void pageTitleAfterSearchShouldBeThere() throws IOException {
+        System.out.println(driver.getTitle());
+        assertEquals("The page title should be this at the start of the test.", "Facebook - Log In or Sign Up", driver.getTitle());
+    }
+
+    @After
+    public void closeBrowser(){
+        try{
+        driver.quit();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+}

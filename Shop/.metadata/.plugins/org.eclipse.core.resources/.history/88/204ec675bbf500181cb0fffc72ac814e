@@ -1,0 +1,176 @@
+package shop.shop;
+
+import static org.junit.Assert.*;
+
+//import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class AppTest {
+    private String baseUrl;
+    private WebDriver driver;
+    public Logger log;
+
+    @Before
+    public void openBrowser() {
+        baseUrl = "http://store.demoqa.com/ ";
+        log = Logger.getLogger("my.log");
+ 	    log.setLevel(Level.ALL);
+ 	    log.info("Started Test");
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver_win32\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(baseUrl);
+        driver.manage().window().maximize();
+    }
+
+    @Test
+    public void orderMagicMouse() throws IOException, InterruptedException {
+        
+    	System.out.println(driver.getTitle());
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	driver.manage().window().maximize();    
+    	Thread.sleep(1000);
+    	WebElement element = driver.findElement(By.linkText("Product Category"));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+        Thread.sleep(1000);
+        driver.findElement(By.linkText("Accessories")).click();
+        driver.findElement(By.cssSelector(getProductId(40))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//a[@href='http://store.demoqa.com/products-page/checkout/']")).click();
+        Thread.sleep(1000);
+        String value = driver.findElement(By.name("quantity")).getText();
+        assertEquals(value,"1");
+        log.info("Confirmed there is only 1 magic mouse on checkout page.");
+        driver.findElement(By.xpath("//span[.='Continue']")).click();
+        Thread.sleep(1000);
+        WebElement email = driver.findElement(By.id("wpsc_checkout_form_9"));
+        email.sendKeys("ksara135@gmail.com");
+        Thread.sleep(1000);
+        WebElement fname = driver.findElement(By.id("wpsc_checkout_form_2"));
+        fname.sendKeys("Sara");
+        Thread.sleep(1000);
+        WebElement lname = driver.findElement(By.id("wpsc_checkout_form_3"));
+        lname.sendKeys("Khan");
+        Thread.sleep(1000);
+        WebElement address = driver.findElement(By.id("wpsc_checkout_form_4"));
+        address.sendKeys("Xxxxx");
+        Thread.sleep(1000);
+        WebElement city = driver.findElement(By.id("wpsc_checkout_form_5"));
+        city.sendKeys("wtaerloo");
+        Thread.sleep(1000);
+        WebElement province = driver.findElement(By.id("wpsc_checkout_form_6"));
+        province.sendKeys("ontario");
+        Thread.sleep(1000);
+        Select country = new Select(driver.findElement(By.id("wpsc_checkout_form_7")));
+        country.selectByIndex(5);
+        Thread.sleep(1000);
+        WebElement pcode = driver.findElement(By.id("wpsc_checkout_form_8"));
+        pcode.sendKeys("n2v2y1");
+        Thread.sleep(1000);
+        WebElement phone = driver.findElement(By.id("wpsc_checkout_form_18"));
+        phone.sendKeys("8073562491");
+        Thread.sleep(1000);
+        driver.findElement(By.id("shippingSameBilling")).click();
+        Thread.sleep(1000);     
+        js.executeScript("window.scrollBy(0,1000)");
+        driver.findElement(By.cssSelector("#wpsc_shopping_cart_container > form > div.wpsc_make_purchase > div > div > span > input")).click();
+        Thread.sleep(1000);
+        String text = driver.findElement(By.cssSelector("#post-30 > div > div.wpsc-transaction-results-wrap > p:nth-child(2)")).getText();
+        assertEquals(text, "Thank you, your purchase is pending. You will be sent an email once the order clears.");
+        log.info("Successfully placed Order for Magic mouse");
+    }
+    
+public void orderAll() throws IOException, InterruptedException {
+        
+    	System.out.println(driver.getTitle());
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	driver.manage().window().maximize();    
+    	Thread.sleep(1000);
+    	WebElement element = driver.findElement(By.linkText("Product Category"));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+        Thread.sleep(1000);
+        driver.findElement(By.linkText("Accessories")).click();
+        driver.findElement(By.cssSelector(getProductId(40))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(getProductId(89))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(getProductId(91))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(getProductId(92))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(getProductId(104))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(getProductId(105))).click();
+        Thread.sleep(1000);
+       
+        driver.findElement(By.xpath("//a[@href='http://store.demoqa.com/products-page/checkout/']")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//span[.='Continue']")).click();
+        Thread.sleep(1000);
+        WebElement email = driver.findElement(By.id("wpsc_checkout_form_9"));
+        email.sendKeys("ksara135@gmail.com");
+        Thread.sleep(1000);
+        WebElement fname = driver.findElement(By.id("wpsc_checkout_form_2"));
+        fname.sendKeys("Sara");
+        Thread.sleep(1000);
+        WebElement lname = driver.findElement(By.id("wpsc_checkout_form_3"));
+        lname.sendKeys("Khan");
+        Thread.sleep(1000);
+        WebElement address = driver.findElement(By.id("wpsc_checkout_form_4"));
+        address.sendKeys("Xxxxx");
+        Thread.sleep(1000);
+        WebElement city = driver.findElement(By.id("wpsc_checkout_form_5"));
+        city.sendKeys("wtaerloo");
+        Thread.sleep(1000);
+        WebElement province = driver.findElement(By.id("wpsc_checkout_form_6"));
+        province.sendKeys("ontario");
+        Thread.sleep(1000);
+        Select country = new Select(driver.findElement(By.id("wpsc_checkout_form_7")));
+        country.selectByIndex(5);
+        Thread.sleep(1000);
+        WebElement pcode = driver.findElement(By.id("wpsc_checkout_form_8"));
+        pcode.sendKeys("n2v2y1");
+        Thread.sleep(1000);
+        WebElement phone = driver.findElement(By.id("wpsc_checkout_form_18"));
+        phone.sendKeys("8073562491");
+        Thread.sleep(1000);
+        driver.findElement(By.id("shippingSameBilling")).click();
+        Thread.sleep(1000);     
+        js.executeScript("window.scrollBy(0,1000)");
+        driver.findElement(By.cssSelector("#wpsc_shopping_cart_container > form > div.wpsc_make_purchase > div > div > span > input")).click();
+        Thread.sleep(1000);
+        String text = driver.findElement(By.cssSelector("#post-30 > div > div.wpsc-transaction-results-wrap > p:nth-child(2)")).getText();
+        assertEquals(text, "Thank you, your purchase is pending. You will be sent an email once the order clears.");
+        log.info("Successfully placed Order for Magic mouse");
+    }
+
+    @After
+    public void closeBrowser(){
+        try{
+        driver.quit();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+}
+    
+     String getProductId(int id)
+     {
+    	 return "#default_products_page_container > div.default_product_display.product_view_"+ id +".accessories.group > div.productcol > form > div.wpsc_buy_button_container.group > div.input-button-buy > span > input";
+     }
+}

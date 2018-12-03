@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AppTest" project="shop" tests="9" started="9" failures="0" errors="0" ignored="0">
+  <testsuite name="shop.shop.AppTest" time="356.037">
+    <testcase name="searchValidProduct" classname="shop.shop.AppTest" time="41.977"/>
+    <testcase name="orderMagicMouseAfterViewingTheDetails" classname="shop.shop.AppTest" time="45.566"/>
+    <testcase name="updateOrder" classname="shop.shop.AppTest" time="50.277"/>
+    <testcase name="orderMagicMouse" classname="shop.shop.AppTest" time="44.06"/>
+    <testcase name="removeOrder" classname="shop.shop.AppTest" time="22.038"/>
+    <testcase name="searchInvalidProduct" classname="shop.shop.AppTest" time="14.72"/>
+    <testcase name="orderMagicMouseGridView" classname="shop.shop.AppTest" time="42.298"/>
+    <testcase name="orderAll" classname="shop.shop.AppTest" time="48.071"/>
+    <testcase name="orderMagicMouseReviewDetails" classname="shop.shop.AppTest" time="47.03"/>
+  </testsuite>
+</testrun>
