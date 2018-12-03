@@ -1,6 +1,7 @@
 # Shop
 Shop Product Assignment Ethoca
-Steps to set up and run the tests
+Steps to set up and run the tests. 
+Please feel free to check ListOfTestCases.docx to find more test cases documentated.
 
 Test Automation Framework Shopping Application:
 Development Tools Used:
